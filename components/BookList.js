@@ -4,12 +4,11 @@ import { addBook } from '../redux/actions/booklist'
 class BookList extends Component {
   constructor(props) {
     super(props)
-    // console.log('props',this.props.books);
     this.state = {book: ""};
   }
   render() {
-    const {state: {book}} = this;
-    const {state: {books}} = this;
+    const {state: {book}, props: {books}} = this;
+
     const  onAddBook = (e) =>  {
       e.preventDefault()
       if (!book.trim()) {
@@ -28,17 +27,17 @@ class BookList extends Component {
               Add book
           </button>
         </form>
-        <booksForEach books={[{name: 'test'}, {name: 'test2'}, {name: 'test3'}]} />
+        <BooksForEach books={books} />
       </div>
     )
   }
 }
-function booksForEach(props) {
+function BooksForEach(props) {
     console.log(props.books)
     return (
       <ul>
         {props.books.map(function(it){
-          return <li id={it.id}>{it.name}</li>;
+          return <li key={it.id}>{it.name}</li>;
         })}
       </ul>
     )
