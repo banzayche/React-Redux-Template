@@ -28,26 +28,21 @@ class BookList extends Component {
               Add book
           </button>
         </form>
-        <ul>
-          {this.props.books.map(function(it){
-            return <li id={it.id}>{it.name}</li>;
-          })}
-        </ul>
+        <booksForEach books={[{name: 'test'}, {name: 'test2'}, {name: 'test3'}]} />
       </div>
     )
   }
 }
-
-// function booksForEach(props) {
-//     console.log(props.books)
-//     return (
-//       <ul>
-//         {props.books.map(function(it){
-//           return <li id={it.id}>{it.name}</li>;
-//         })}
-//       </ul>
-//     )
-// }
+function booksForEach(props) {
+    console.log(props.books)
+    return (
+      <ul>
+        {props.books.map(function(it){
+          return <li id={it.id}>{it.name}</li>;
+        })}
+      </ul>
+    )
+}
 
 export default connect((state, ownProps) => ({
   books: state.booklist.books
